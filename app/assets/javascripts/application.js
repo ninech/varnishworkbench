@@ -17,3 +17,6 @@
 //
 // Loads all Bootstrap javascripts
 //= require bootstrap
+//
+// Loads jQuery UI
+//= require jquery.ui.all
