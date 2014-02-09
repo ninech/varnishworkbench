@@ -18,11 +18,11 @@ class CacheControl < ActiveRecord::Base
     def header_expire
         case self.expire
         when 'now'
-            response.headers["Expire"] = DateTime.now.httpdate
+            DateTime.now.httpdate
         when '60'
-            response.headers["Expire"] = (DateTime.now.to_time+60).to_datetime.httpdate
+            (DateTime.now.to_time+60).to_datetime.httpdate
         when '3600'
-            response.headers["Expire"] = (DateTime.now.to_time+3600).to_datetime.httpdate
+            (DateTime.now.to_time+3600).to_datetime.httpdate
         else
             nil
         end

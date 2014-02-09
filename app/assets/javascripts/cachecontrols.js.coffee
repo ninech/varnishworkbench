@@ -31,7 +31,7 @@ $(document).ready () ->
       range: 'min',
       value: parseInt($(this).closest('div.form-group').find('input').val())
       slide: (event, ui) ->
-        $(this).closest('div.form-group').find('input').val($ ui.value )
+        $(this).closest('div.form-group').find('input').val( ui.value )
         $(this).closest('div.form-group').find('.form-control-static').text( ui.value + 's' )
         $(this).closest('div.form-group').find('input').change()
     })

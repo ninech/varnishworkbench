@@ -10,7 +10,7 @@ class PagesController < ApplicationController
         @cachecontrol = CacheControl.find_or_initialize_by(ip: request.remote_ip)
 
         if @cachecontrol.header_expire
-            response.headers["Expire"] = @cachecontrol.header_expire
+            response.headers["Expires"] = @cachecontrol.header_expire
         end
         if @cachecontrol.header_cachecontrol
             response.headers["Cache-Control"] = @cachecontrol.header_cachecontrol

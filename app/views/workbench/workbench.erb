@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= render template: 'pages/edit' %>
+    <%= render template: 'cachecontrols/edit' %>
+  </div>
+  <div class="col-md-6">
+    <%= render template: "pages/show" %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Headers</div>
+      <ul class="list-group">
+        <li class="list-group-item">X-Varnish-Cache: <i id="hdr_cache"></i></li>
+        <li class="list-group-item">X-Varnish-Cacheable: <i id="hdr_cacheable"></i></li>
+        <li class="list-group-item">X-Varnish-Ttl: <i id="hdr_ttl"></i></li>
+        <li class="list-group-item">Age: <i id="hdr_age"></i></li>
+        <li class="list-group-item">Vary: <i id="hdr_vary"></i></li>
+        <li class="list-group-item">Date: <i id="hdr_date"></i></li>
+        <li class="list-group-item">Expires: <i id="hdr_expires"></i></li>
+        <li class="list-group-item">Cache-Control: <i id="hdr_cachecontrol"></i></li>
+      </ul>
+    </div>
+  </div>
+</div>

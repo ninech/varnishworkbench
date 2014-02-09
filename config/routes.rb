@@ -1,5 +1,8 @@
 Varnishworkbench::Application.routes.draw do
 
+    # Workbench Resources
+    get   'workbench' => 'workbench#workbench'
+
     # Pages Resource
     get   'page'      => 'pages#show'
     post  'page'      => 'pages#update'
