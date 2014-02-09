@@ -1,4 +1,10 @@
 Varnishworkbench::Application.routes.draw do
+
+    # Pages Resource
+    get       'page'       => 'pages#show'
+    post      'page'       => 'pages#update'
+    get       'page/edit'  => 'pages#edit'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

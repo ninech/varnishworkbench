@@ -1,0 +1,20 @@
+<div class="page-header"><h1>Backend</h1></div>
+<%= form_for :page, url: page_path(), method: :update, html: { id: 'form_page' } do |f| %>
+    <div class="form-group">
+        <label for="title" class="col-lg-2 control-label">Title</label>
+        <div class="col-lg-10">
+            <%= f.text_field :title, class: 'form-control' %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Content" class="col-lg-2 control-label">Content</label>
+        <div class="col-lg-10">
+            <%= f.text_area :text, class: 'form-control' %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <%= f.submit class: 'btn btn-success', id: 'form_page_submit' %>
+        </div>
+    </div>
+<% end %>
