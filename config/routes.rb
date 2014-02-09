@@ -5,9 +5,14 @@ Varnishworkbench::Application.routes.draw do
     post  'page'      => 'pages#update'
     get   'page/edit' => 'pages#edit'
     
-    # Header Resource
+    # CacheControls Resource
     get   'cachecontrol' => 'cachecontrols#edit'
     post  'cachecontrol' => 'cachecontrols#update'
+
+    # Housekeeping Resource
+    get 'housekeeping/refresh' => 'housekeeping#refresh'
+    get 'housekeeping/purge' => 'housekeeping#purge'
+    get 'housekeeping/ban' => 'housekeeping#ban'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
