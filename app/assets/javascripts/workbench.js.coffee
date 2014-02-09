@@ -3,7 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 frontend_reload = () ->
-  setTimeout(frontend_reload, parseInt($('#inputReload').val()) * 1000)
+  timeout = parseInt($('#inputReload').val())
+  console.log timeout
+  if timeout >= 0
+      setTimeout(frontend_reload, timeout * 1000)
   $('.loading').show()
   $.ajax({
       url:   '/page',
