@@ -1,0 +1,111 @@
+<div class="page-header"><h1>Cache-Control</h1></div>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="cachecontorl-tabs">
+    <li class="active"><a href="#cachecontrol" data-toggle="tab"><i class="fa fa-cog"></i> Cache Control</a></li>
+    <li><a href="#timeout" data-toggle="tab"><i class="fa fa-clock-o"></i> Timeout</a></li>
+    <li><a href="#housekeeping" data-toggle="tab"><i class="fa fa-eraser"></i> Housekeeping</a></li>
+</ul>
+
+<div class="tab-content">
+    <!-- Cache-Control Tab -->
+    <div class="tab-pane active" id="cachecontrol">
+        <%= form_for :cachecontrol, url: cachecontrol_path(), method: :update, html: { id: 'form_cachecontrol' } do |f| %>
+            <div class="form-group">
+            <label class="control-label col-sm-2" for="title">Expires</label>
+            <div class="radio-inline">
+                <label>
+                    <%= f.radio_button :expire, 'none' %> None
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <%= f.radio_button :expire, 'now' %> Now
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <%= f.radio_button :expire, '60' %> +60s
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <%= f.radio_button :expire, '3600' %>  +1h
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="Content">Cache-Control</label>
+            <div class="checkbox-inline">
+                <label>
+                    <%= f.check_box :noCache %> no-cache
+                </label>
+            </div>
+            <div class="checkbox-inline">
+                <label>
+                    <%= f.check_box :noStore %> no-store
+                </label>
+            </div>
+            <div class="checkbox-inline">
+                <label>
+                    <%= f.check_box :public %> public
+                </label>
+            </div>
+            <div class="checkbox-inline">
+                <label>
+                    <%= f.check_box :private %> private
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-4 control-label" for="Content">max-age</label>
+            <div class="col-lg-2">
+                <%= f.text_field :maxAge, class: 'form-control' %>
+            </div>
+            <label class="col-lg-2 control-label" for="Content">s-maxage</label>
+            <div class="col-lg-2">
+                <%= f.text_field :sMaxAge, class: 'form-control' %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+    <!-- Timeout Tab -->
+    <div class="tab-pane" id="timeout">
+        <%= form_for :cachecontrol, url: cachecontrol_path(), method: :update, html: { id: 'form_cachecontrol', class: 'form-horizontal' } do |f| %>
+            <div class="form-group">
+            <label data-original-title="How often should the Frontend be reloaded." data-toggle="tooltip" class="control-label add-tooltip col-xs-3" for="reload">
+                Reload
+            </label>
+            <div class="col-xs-2">
+                <input type="text" value="5s" id="inputReload" class="form-control">
+            </div>
+            <div class="col-xs-6 slider"> </div>
+        </div>
+        <div class="form-group">
+            <label data-original-title="How long should a page lode take." data-toggle="tooltip" class="control-label add-tooltip col-xs-3" for="cachecontrol_timeout">
+                Load Timeout
+            </label>
+            <div class="col-xs-2">
+            <%= f.text_field :timeout, class: 'form-control' %>
+            </div>
+            <div class="col-xs-6 slider"></div>
+        </div>
+    <% end %>
+    </div>
+    <!-- House Keeping Tab -->
+    <div class="tab-pane" id="housekeeping">
+        <div class="form-group">
+            <div class="col-lg-10">
+                <button data-loading-text="&lt;i class='fa fa-refresh'&gt;&lt;/i&gt; Refresh..." value="refresh" class="btn housekeeping btn-success" type="submit"><i class="fa fa-refresh"></i> Refresh</button>
+                <button data-loading-text="&lt;i class='fa fa-eraser'&gt;&lt;/i&gt; Purge..." value="purge" class="btn housekeeping btn-warning" type="submit"><i class="fa fa-eraser"></i> Purge</button>
+                <button data-loading-text="&lt;i class='fa fa-trash-o'&gt;&lt;/i&gt; Ban..." value="ban" class="btn housekeeping btn-danger" type="submit"><i class="fa fa-trash-o"></i> Ban</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label" for="result">Result</label>
+            <div class="col-lg-10">
+                <textarea disabled="" id="cleanResult" rows="8" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

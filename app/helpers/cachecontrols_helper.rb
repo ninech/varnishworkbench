@@ -1,0 +1,2 @@
+module CachecontrolsHelper
+end
