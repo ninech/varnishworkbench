@@ -15,15 +15,25 @@ $(document).ready () ->
       dataType: 'jsonp',
     })
 
+  $('#form_timeout input').change (event) ->
+    $.ajax({
+        type: $('#form_timeout').attr('method'),
+        url:  $('#form_timeout').attr('action'),
+        data: $('#form_timeout').serialize(),
+        dataType: 'jsonp',
+    })
+
   $('.slider').each (ui) ->
-    $(this).slider({
-      min: 1,
-      max: 30,
+    s = $(this).slider({
+      min: parseInt($(this).closest('div.form-group').find('input').attr('data-min')),
+      max: parseInt($(this).closest('div.form-group').find('input').attr('data-max')),
       step: 1,
       range: 'min',
       value: parseInt($(this).closest('div.form-group').find('input').val())
       slide: (event, ui) ->
-        $(this).closest('div.form-group').find('input').val( ui.value + 's' )
+        $(this).closest('div.form-group').find('input').val($ ui.value )
+        $(this).closest('div.form-group').find('.form-control-static').text( ui.value + 's' )
+        $(this).closest('div.form-group').find('input').change()
     })
-    $(this).closest('div.form-group').find('input').attr('disabled', true)
-
+    $(this).closest('div.form-group').find('.form-control-static').show()
+    $(this).closest('div.form-group').find('input').hide()

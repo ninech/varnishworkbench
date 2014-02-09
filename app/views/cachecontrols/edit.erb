@@ -10,9 +10,9 @@
 <div class="tab-content">
     <!-- Cache-Control Tab -->
     <div class="tab-pane active" id="cachecontrol">
-        <%= form_for :cachecontrol, url: cachecontrol_path(), method: :update, html: { id: 'form_cachecontrol' } do |f| %>
+        <%= form_for :cachecontrol, url: cachecontrol_path(), method: :update, html: { id: 'form_cachecontrol', class: 'form-horizontal' } do |f| %>
             <div class="form-group">
-            <label class="control-label col-sm-2" for="title">Expires</label>
+            <label class="control-label col-xs-3" for="title">Expires</label>
             <div class="radio-inline">
                 <label>
                     <%= f.radio_button :expire, 'none' %> None
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="Content">Cache-Control</label>
+            <label class="control-label col-xs-3" for="Content">Cache-Control</label>
             <div class="checkbox-inline">
                 <label>
                     <%= f.check_box :noCache %> no-cache
@@ -58,26 +58,33 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-4 control-label" for="Content">max-age</label>
-            <div class="col-lg-2">
-                <%= f.text_field :maxAge, class: 'form-control' %>
+            <label class="col-xs-3 control-label" for="Content">max-age</label>
+            <div class="col-xs-2">
+                <%= f.text_field :maxAge, class: 'form-control' , 'data-min' => 0, 'data-max' => 3600 %>
+                <p class="form-control-static" style="display: none"><%= @cachecontrol.maxAge %>s</p>
             </div>
-            <label class="col-lg-2 control-label" for="Content">s-maxage</label>
-            <div class="col-lg-2">
-                <%= f.text_field :sMaxAge, class: 'form-control' %>
+            <div class="col-xs-6 slider"> </div> 
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label" for="Content">s-maxage</label>
+            <div class="col-xs-2">
+                <%= f.text_field :sMaxAge, class: 'form-control', 'data-min' => 0, 'data-max' => 3600 %>
+                <p class="form-control-static" style="display: none"><%= @cachecontrol.sMaxAge %>s</p>
             </div>
+            <div class="col-xs-6 slider"> </div>
         </div>
     <% end %>
     </div>
     <!-- Timeout Tab -->
     <div class="tab-pane" id="timeout">
-        <%= form_for :cachecontrol, url: cachecontrol_path(), method: :update, html: { id: 'form_cachecontrol', class: 'form-horizontal' } do |f| %>
+        <%= form_for :cachecontrol, url: cachecontrol_path(), method: :update, html: { id: 'form_timeout', class: 'form-horizontal' } do |f| %>
             <div class="form-group">
             <label data-original-title="How often should the Frontend be reloaded." data-toggle="tooltip" class="control-label add-tooltip col-xs-3" for="reload">
                 Reload
             </label>
             <div class="col-xs-2">
-                <input type="text" value="5s" id="inputReload" class="form-control">
+                <input type="text" value="5s" id="inputReload" class="form-control" data-min='1' data-max='30'>
+                <p class="form-control-static" style="display: none">5s</p>
             </div>
             <div class="col-xs-6 slider"> </div>
         </div>
@@ -86,7 +93,8 @@
                 Load Timeout
             </label>
             <div class="col-xs-2">
-            <%= f.text_field :timeout, class: 'form-control' %>
+                <%= f.text_field :timeout, class: 'form-control' , 'data-min' => 1, 'data-max' => 30 %>
+                <p class="form-control-static" style="display: none"><%= @cachecontrol.timeout %>s</p>
             </div>
             <div class="col-xs-6 slider"></div>
         </div>
