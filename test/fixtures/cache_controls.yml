@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip: MyString
+  expire: MyString
+  noCache: false
+  noStore: false
+  public: false
+  private: false
+  maxAge: 1
+  sMaxAge: 1
+  timeout: 1
+
+two:
+  ip: MyString
+  expire: MyString
+  noCache: false
+  noStore: false
+  public: false
+  private: false
+  maxAge: 1
+  sMaxAge: 1
+  timeout: 1
