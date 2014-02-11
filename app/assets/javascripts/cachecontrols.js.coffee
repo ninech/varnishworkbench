@@ -37,3 +37,16 @@ $(document).ready () ->
     })
     $(this).closest('div.form-group').find('.form-control-static').show()
     $(this).closest('div.form-group').find('input').hide()
+
+  $('button.housekeeping').click (e) ->
+    e.preventDefault()
+    $('button.housekeeping').prop('disabled', true)
+    $.ajax({
+      type: 'GET'
+      url:  '/housekeeping/' + $(this).val(),
+      dataType: 'jsonp',
+    }).done (json) ->
+      $('#cleanResult').text('')
+      $('#cleanResult').append('&gt; ' + line + '\n') for line in json.out
+      $('#cleanResult').append('&lt; ' + line + '\n') for line in json.in
+      $('button.housekeeping').prop('disabled', false)

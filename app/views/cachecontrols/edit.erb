@@ -102,18 +102,20 @@
     </div>
     <!-- House Keeping Tab -->
     <div class="tab-pane" id="housekeeping">
+        <form class='form-horizontal'>
         <div class="form-group">
-            <div class="col-lg-10">
+            <div class="col-xs-10 col-xs-offset-2">
                 <button data-loading-text="&lt;i class='fa fa-refresh'&gt;&lt;/i&gt; Refresh..." value="refresh" class="btn housekeeping btn-success" type="submit"><i class="fa fa-refresh"></i> Refresh</button>
                 <button data-loading-text="&lt;i class='fa fa-eraser'&gt;&lt;/i&gt; Purge..." value="purge" class="btn housekeeping btn-warning" type="submit"><i class="fa fa-eraser"></i> Purge</button>
                 <button data-loading-text="&lt;i class='fa fa-trash-o'&gt;&lt;/i&gt; Ban..." value="ban" class="btn housekeeping btn-danger" type="submit"><i class="fa fa-trash-o"></i> Ban</button>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 control-label" for="result">Result</label>
-            <div class="col-lg-10">
+            <label class="col-xs-2 control-label" for="result">Result</label>
+            <div class="col-xs-10">
                 <textarea disabled="" id="cleanResult" rows="8" class="form-control"></textarea>
             </div>
         </div>
+    </form>
     </div>
 </div>
