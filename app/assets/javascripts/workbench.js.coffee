@@ -4,9 +4,10 @@
 
 frontend_reload = () ->
   timeout = parseInt($('#inputReload').val())
-  console.log timeout
   if timeout >= 0
       setTimeout(frontend_reload, timeout * 1000)
+  else
+      return 0
   $('.loading').show()
   $.ajax({
       url:   '/page',
