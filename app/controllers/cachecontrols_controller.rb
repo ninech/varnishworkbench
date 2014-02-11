@@ -16,7 +16,8 @@ class CachecontrolsController < ApplicationController
             :public,
             :private,
             :maxAge,
-            :sMaxAge
+            :sMaxAge,
+            :timeout
         ))
 
         respond_to do |format|
@@ -35,7 +36,8 @@ class CachecontrolsController < ApplicationController
             :public,
             :private,
             :maxAge,
-            :sMaxAge
+            :sMaxAge,
+            :timeout
         )
       end
 

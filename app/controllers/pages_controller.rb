@@ -18,6 +18,8 @@ class PagesController < ApplicationController
 
         @page = Page.find_or_initialize_by(ip: request.remote_ip)
 
+        sleep @cachecontrol.timeout
+
         respond_to do |format|
             format.html  { render }
             format.json  { render :json     => @page }
