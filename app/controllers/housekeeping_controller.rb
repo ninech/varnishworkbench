@@ -4,8 +4,8 @@ require 'net/http'
 class HousekeepingController < ApplicationController
 
     def refresh
-        url = URI.parse('http://varnish.nine.ch/page')
-        req = Net::HTTP::Refresh.new(url.path)
+        url = URI.parse(request.original_url)
+        req = Net::HTTP::Refresh.new('/page')
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
         }
@@ -25,8 +25,8 @@ class HousekeepingController < ApplicationController
     end
 
     def purge
-        url = URI.parse('http://varnish.nine.ch/page')
-        req = Net::HTTP::Purge.new(url.path)
+        url = URI.parse(request.original_url)
+        req = Net::HTTP::Purge.new('/page')
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
         }
@@ -54,7 +54,20 @@ class HousekeepingController < ApplicationController
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
         }
-        render :json => {req: req, res: res},
+
+        ret = {
+            code: res.code,
+            out: [
+                %Q{#{req.method} #{req.path} HTTP/1.1},
+                %Q{X-Ban-Host: #{request.headers['Host']}},
+                %Q{X-Ban-Url: /page.*}
+            ],
+            in: [
+                %Q{HTTP/#{res.http_version} #{res.code} #{res.message}}
+            ]
+        }
+
+        render :json     => ret,
                :callback => params[:callback]
     end
 
