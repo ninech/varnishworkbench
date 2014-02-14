@@ -48,8 +48,9 @@ class HousekeepingController < ApplicationController
     def ban
         url = URI.parse(request.original_url)
         req = Net::HTTP::Ban.new('/page', {
-            'X-Ban-Host' => request.headers['Host'],
-            'X-Ban-Url' => '/page.*',
+            'X-Ban-Host'  => request.headers['Host'],
+            'X-Ban-Url'   => '/page.*',
+            'X-Cache-For' => request.remote_ip,
         })
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
