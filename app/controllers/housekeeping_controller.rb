@@ -5,7 +5,9 @@ class HousekeepingController < ApplicationController
 
     def refresh
         url = URI.parse(request.original_url)
-        req = Net::HTTP::Refresh.new('/page')
+        req = Net::HTTP::Refresh.new('/page', {
+            'X-Cache-For' => request.remote_ip,
+        })
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
         }
@@ -26,7 +28,9 @@ class HousekeepingController < ApplicationController
 
     def purge
         url = URI.parse(request.original_url)
-        req = Net::HTTP::Purge.new('/page')
+        req = Net::HTTP::Purge.new('/page', {
+            'X-Cache-For' => request.remote_ip,
+        })
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
         }
