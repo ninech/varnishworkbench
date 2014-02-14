@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
+gem 'coderay'
 gem 'mysql2'
 
 # Use SCSS for stylesheets
@@ -32,6 +33,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'unicorn'
 end
 
 group :doc do

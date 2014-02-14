@@ -3,6 +3,7 @@ Varnishworkbench::Application.routes.draw do
     # Workbench Resources
     root 'workbench#index'
     get   'workbench' => 'workbench#workbench'
+    get   'vcl' => 'workbench#vcl'
 
     # Pages Resource
     get   'page'      => 'pages#show'

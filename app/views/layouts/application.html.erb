@@ -30,8 +30,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li <%= current_page?(controller: 'workbench', action: 'index') ? 'class=active' : '' %>><%= link_to "Home", root_path %></li>
-            <li <%= current_page?(controller: 'workbench', action: 'workbench') ? 'class=active' : '' %>><%= link_to "Workbench", workbench_path %></li>
-            <li ><a href="#">VCL</a></li>
+              <li <%= current_page?(controller: 'workbench', action: 'workbench') ? 'class=active' : '' %>><%= link_to "Workbench", workbench_path %></li>
+              <li <%= current_page?(controller: 'workbench', action: 'vcl') ? 'class=active' : '' %>><%= link_to "VCL", vcl_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a style="color: #fff" href="http://www.nine.ch/">nine.ch</a></li>
