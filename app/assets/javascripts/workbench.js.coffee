@@ -12,7 +12,7 @@ frontend_reload = () ->
   $.ajax({
       url:   '/page',
       cache: false,
-      dataType: 'jsonp',
+      dataType: 'json',
   }).done (json, status, xhr) ->
     $('.loading').hide()
     $('#frontend_title').text(json.title)
