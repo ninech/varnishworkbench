@@ -15,6 +15,7 @@ class PagesController < ApplicationController
         if @cachecontrol.header_cachecontrol
             response.headers["Cache-Control"] = @cachecontrol.header_cachecontrol
         end
+        response.headers["Vary"] = "Accept"
 
         @page = Page.find_or_initialize_by(ip: remote_ip)
 

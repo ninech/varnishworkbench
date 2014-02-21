@@ -44,7 +44,7 @@ $(document).ready () ->
     $.ajax({
       type: 'GET'
       url:  '/housekeeping/' + $(this).val(),
-      dataType: 'jsonp',
+      dataType: 'json',
     }).done (json) ->
       $('#cleanResult').text('')
       $('#cleanResult').append('&gt; ' + line + '\n') for line in json.out

@@ -7,6 +7,7 @@ class HousekeepingController < ApplicationController
         url = URI.parse(request.original_url)
         req = Net::HTTP::Refresh.new('/page', {
             'X-Cache-For' => request.remote_ip,
+            'Accept' => request.headers['HTTP_ACCEPT'],
         })
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
