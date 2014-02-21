@@ -15,8 +15,8 @@ class WorkbenchController < ApplicationController
     end
 
     def workbench
-        @cachecontrol = CacheControl.find_or_initialize_by(ip: request.remote_ip)
-        @page = Page.find_or_initialize_by(ip: request.remote_ip)
+        @cachecontrol = CacheControl.find_or_initialize_by(ip: remote_ip)
+        @page = Page.find_or_initialize_by(ip: remote_ip)
     end
 
 end

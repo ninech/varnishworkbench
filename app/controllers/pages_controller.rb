@@ -3,11 +3,11 @@ class PagesController < ApplicationController
     respond_to :html, :json, :js
 
     def edit
-        @page = Page.find_or_initialize_by(ip: request.remote_ip)
+        @page = Page.find_or_initialize_by(ip: remote_ip)
     end
 
     def show
-        @cachecontrol = CacheControl.find_or_initialize_by(ip: request.remote_ip)
+        @cachecontrol = CacheControl.find_or_initialize_by(ip: remote_ip)
 
         if @cachecontrol.header_expire
             response.headers["Expires"] = @cachecontrol.header_expire
@@ -16,7 +16,7 @@ class PagesController < ApplicationController
             response.headers["Cache-Control"] = @cachecontrol.header_cachecontrol
         end
 
-        @page = Page.find_or_initialize_by(ip: request.remote_ip)
+        @page = Page.find_or_initialize_by(ip: remote_ip)
 
         sleep @cachecontrol.timeout
 
@@ -29,7 +29,7 @@ class PagesController < ApplicationController
     end
 
     def update
-        @page = Page.find_or_initialize_by(ip: request.remote_ip)
+        @page = Page.find_or_initialize_by(ip: remote_ip)
 
         @state = @page.update(params[:page].permit(:title, :text))
 
