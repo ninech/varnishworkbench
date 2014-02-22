@@ -1,28 +1,29 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Requirements
 
-Things you may want to cover:
+* Ruby
 
-* Ruby version
+* Bundler
 
-* System dependencies
+* Multiprocess Web server
 
-* Configuration
+  * This App request pages from itself. This can result in deadlocks.
 
-* Database creation
+* Varnish
 
-* Database initialization
+* A Database
 
-* How to run the test suite
+=== Deployment
 
-* Services (job queues, cache servers, search engines, etc.)
+* Install the App
 
-* Deployment instructions
+  * git clone ...
 
-* ...
+  * bundle install --deployment
 
+  * Setup Web server
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  * Setup Varnish
+
+    * Use VCL from public/ and addapt to your environment.
