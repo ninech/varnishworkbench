@@ -10,7 +10,7 @@ frontend_reload = () ->
       return 0
   $('.loading').show()
   $.ajax({
-      url:   '/page',
+      url:   '/page.json',
       cache: false,
       dataType: 'json',
   }).done (json, status, xhr) ->

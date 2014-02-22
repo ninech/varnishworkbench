@@ -5,10 +5,8 @@ class HousekeepingController < ApplicationController
 
     def refresh
         url = URI.parse(request.original_url)
-        req = Net::HTTP::Refresh.new('/page', {
+        req = Net::HTTP::Refresh.new('/page.json', {
             'X-Cache-For' => request.remote_ip,
-            'Accept' => request.headers['HTTP_ACCEPT'],
-            'X-Requested-With' => request.headers['HTTP_X_REQUESTED_WITH'],
         })
         res = Net::HTTP.start(url.host, url.port) {|http|
             http.request(req)
@@ -30,7 +28,7 @@ class HousekeepingController < ApplicationController
 
     def purge
         url = URI.parse(request.original_url)
-        req = Net::HTTP::Purge.new('/page', {
+        req = Net::HTTP::Purge.new('/page.json', {
             'X-Cache-For' => request.remote_ip,
         })
         res = Net::HTTP.start(url.host, url.port) {|http|
@@ -53,7 +51,7 @@ class HousekeepingController < ApplicationController
 
     def ban
         url = URI.parse(request.original_url)
-        req = Net::HTTP::Ban.new('/page', {
+        req = Net::HTTP::Ban.new('/page.json', {
             'X-Ban-Host'  => request.headers['Host'],
             'X-Ban-Url'   => '/page.*',
             'X-Cache-For' => request.remote_ip,
