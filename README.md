@@ -4,6 +4,8 @@ The Varnish Workbench is a simple web application developed by [nine.ch](http://
 
 Visit http://varnish.nine.ch/ for demo.
 
+![Varnish Workbench](doc/images/varnish_workbench.png)
+
 ## Requirements
 
 * Ruby
