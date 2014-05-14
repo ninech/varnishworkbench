@@ -43,10 +43,10 @@ class CacheControl < ActiveRecord::Base
             @h << 'private'
         end
         if self.maxAge > 0
-            @h << %Q{max-age:#{self.maxAge}}
+            @h << %Q{max-age=#{self.maxAge}}
         end
         if self.sMaxAge > 0
-            @h << %Q{s-maxage:#{self.sMaxAge}}
+            @h << %Q{s-maxage=#{self.sMaxAge}}
         end
         @h.join(', ')
     end
