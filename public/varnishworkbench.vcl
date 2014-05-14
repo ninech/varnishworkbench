@@ -85,6 +85,9 @@ sub vcl_fetch {
     } else {
         set beresp.http.X-Varnish-Cacheable = "YES";
     }
+
+    // Bypass "Hit-For-Pass"
+    return (deliver);
 }
 
 /*
