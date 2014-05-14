@@ -1,6 +1,6 @@
-# nine.ch Varnish Workbench
+# Varnish Workbench
 
-A simple Ruby on Rails application to play with, learn and test the [Varnish](https://www.varnish-cache.org/) web application accelerator, a caching reverse proxy.
+The Varnish Workbench is a simple web application developed by [nine.ch](http://nine.ch) to play with, learn and test the [Varnish](https://www.varnish-cache.org) web application accelerator, a caching reverse proxy. It is intended to help web developers and system administrators understand how Varnish works and how it can be controled.
 
 Visit http://varnish.nine.ch/ for demo.
 
@@ -24,4 +24,4 @@ Visit http://varnish.nine.ch/ for demo.
 
 ## Lincense
 
-The nine.ch Varnish Workbench is released under the [MIT License](http://www.opensource.org/licenses/MIT). See LICENSE.txt for further details.
+The Varnish Workbench is released under the [MIT License](http://www.opensource.org/licenses/MIT). See LICENSE.txt for further details.
